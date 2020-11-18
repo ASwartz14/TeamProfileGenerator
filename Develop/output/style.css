@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(161, 159, 159);
+}
+
+.jumbotron {
+    background-color: rgb(63, 121, 101);
+    color: white;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.card-header {
+    background-color: rgb(93, 189, 144);
+    font-family: 'Permanent Marker', cursive;
+}

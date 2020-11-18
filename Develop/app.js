@@ -11,6 +11,85 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const employees = [];
+
+// questions for managers
+const managerQs = (name, id, email, role) => {
+    inquirer
+        .prompt([{
+
+            type: "input",
+            message: "What the manager's office number?",
+            name: "officeNumber"
+        }, ])
+        .then(({
+            officeNumber
+        }) => {
+            const manager = new Manager(name, id, email, officeNumber);
+            employees.push(manager);
+            newEmployee();
+        });
+};
+// questions for engineers
+const engineerQs = (name, id, email, role) => {
+    inquirer
+        .prompt([{
+
+            type: "input",
+            message: "What the engineer's github?",
+            name: "github"
+
+        }, ])
+        .then(({
+            github
+        }) => {
+            const engineer = new Engineer(name, id, email, github);
+            employees.push(engineer);
+            newEmployee();
+        });
+};
+// questions for interns
+const internQs = (name, id, email, role) => {
+    inquirer
+        .prompt([{
+            type: "input",
+            message: "What school did/does this intern attend?",
+            name: "school"
+
+
+        }, ])
+        .then(({
+            school
+        }) => {
+            const intern = new Intern(name, id, email, school);
+            employees.push(intern);
+            newEmployee();
+        });
+};
+// After the user has input all employees desired, call the `render` function (required
+// above) and pass in an array containing all employee objects; the `render` function will
+// generate and return a block of HTML including templated divs for each employee!
+const newEmployee = () => {
+    inquirer
+        .prompt([{
+            type: "confirm",
+            message: "Would you like to add another employee?",
+            name: "add",
+        }, ])
+        .then(({
+            add
+        }) => {
+            if (add) {
+                employeeQs();
+            } else {
+                const profileOutput = render(employees);
+                fs.writeFile(outputPath, profileOutput, (error) => {
+                    if (error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+};
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 const employeeQs = () => {
@@ -53,90 +132,12 @@ const employeeQs = () => {
             name,
             id,
             email,
-            role
+            role,
+
         }) => {
             role(name, id, email);
         });
 
-};
-// questions for managers
-const managerQs = (name, id, email, role) => {
-    inquirer
-        .prompt([{
-
-            type: "input",
-            message: "What the manager's office number?",
-            name: "officeNumber"
-        }, ])
-        .then(({
-            officeNumber
-        }) => {
-            const manager = new Manager(name, id, email, role, officeNumber);
-            employees.push(manager);
-
-            newEmployee();
-        });
-};
-// questions for engineers
-const engineerQs = (name, id, email, role) => {
-    inquirer
-        .prompt([{
-
-            type: "input",
-            message: "What the engineer's github?",
-            name: "github"
-
-        }, ])
-        .then(({
-            github
-        }) => {
-            const engineer = new Engineer(name, id, email, role, github);
-            employees.push(engineer);
-            newEmployee();
-        });
-};
-// questions for interns
-const internQs = (name, id, email, role) => {
-    inquirer
-        .prompt([{
-            type: "input",
-            message: "What school did/does this intern attend?",
-            name: "school"
-
-
-        }, ])
-        .then(({
-            school
-        }) => {
-            const intern = new Intern(name, id, email, role, school);
-            employees.push(intern);
-            newEmployee();
-        });
-};
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-const newEmployee = () => {
-    inquirer
-        .prompt([{
-            type: "confirm",
-            message: "Would you like to add another employee?",
-            name: "add",
-        }, ])
-        .then(({
-            add
-        }) => {
-            if (add) {
-                employeeQs();
-            } else {
-                const profileOutput = render(employees);
-                fs.writeFile(outputPath, profileOutput, (error) => {
-                    if (error) {
-                        console.log(error);
-                    }
-                });
-            }
-        });
 };
 // go html
 employeeQs();
