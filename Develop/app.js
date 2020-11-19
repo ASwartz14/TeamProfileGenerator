@@ -19,7 +19,16 @@ const managerQs = (name, id, email, role) => {
 
             type: "input",
             message: "What the manager's office number?",
-            name: "officeNumber"
+            name: "officeNumber",
+            // validation for wrong info
+            validate: function (officeNumber) {
+                if (officeNumber === "") {
+                    console.log("\nPlease enter a valid office number.");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
         }, ])
         .then(({
             officeNumber
@@ -36,7 +45,16 @@ const engineerQs = (name, id, email, role) => {
 
             type: "input",
             message: "What the engineer's github?",
-            name: "github"
+            name: "github",
+            // validation for wrong info
+            validate: function (github) {
+                if (github === "") {
+                    console.log("\nPlease enter a valid github.");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
 
         }, ])
         .then(({
@@ -53,7 +71,17 @@ const internQs = (name, id, email, role) => {
         .prompt([{
             type: "input",
             message: "What school did/does this intern attend?",
-            name: "school"
+            name: "school",
+            // validation for wrong info
+            validate: function (school) {
+                if (school === "") {
+                    console.log("\nPlease enter a valid school.");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
 
 
         }, ])
@@ -97,17 +125,45 @@ const employeeQs = () => {
         .prompt([{
                 type: "input",
                 message: "What is this employee's name?",
-                name: "name"
+                name: "name",
+                // validation for wrong info
+                validate: function (name) {
+                    if (name === "") {
+                        console.log("\nPlease enter a valid name.");
+                        return false;
+                    } else {
+                        return true;
+                    }
+
+                }
             },
             {
                 type: "input",
                 message: "What this employee's ID number?",
-                name: "id"
+                name: "id",
+                // validation for wrong info
+                validate: function (id) {
+                    if (id === "") {
+                        console.log("\nPlease enter a valid ID number.");
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: "input",
                 message: "What is this employee's email address?",
-                name: "email"
+                name: "email",
+                // validation for wrong info
+                validate: function (email) {
+                    if (email === "") {
+                        console.log("\nPlease enter a valid email address.");
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: "list",
