@@ -14,7 +14,7 @@
   * See the project repository: https://github.com/ASwartz14/TeamProfileGenerator on GitHub.
   * Deployed Project: 
  ## Visuals
- ![TeamProfileGenerator](https://github.com/ASwartz14/TeamProfileGenerator/blob/master/Develop/assets/CLI-Team-Profile-Generator.mp4)
+ ![TeamProfileGenerator](https://github.com/ASwartz14/TeamProfileGenerator/blob/master/Develop/assets/ezgif.com-gif-maker%20(2).gif)
   ## Installation
   npm i
   ## Usage 
