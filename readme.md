@@ -15,6 +15,8 @@
   * Deployed Project: 
  ## Visuals
  ![TeamProfileGenerator](https://github.com/ASwartz14/TeamProfileGenerator/blob/master/Develop/assets/ezgif.com-gif-maker%20(2).gif)
+ ![ScreenShotTPG](https://github.com/ASwartz14/TeamProfileGenerator/blob/master/Develop/assets/Screenshot%20(65).png)
+ ![ScreenShotTPG2](https://github.com/ASwartz14/TeamProfileGenerator/blob/master/Develop/assets/Screenshot%20(66).png)
   ## Installation
   npm i
   ## Usage 
